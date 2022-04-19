@@ -13,6 +13,7 @@
 
 	::include("quicker/world_screen_topbar_daytime_module");
 	::include("quicker/world_state");
+	::include("quicker/tooltip_events");
 
 	::mods_registerJS("quicker/quicker.js");
 	::mods_registerJS("quicker/world_screen_topbar_daytime_module.js");
