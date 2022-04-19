@@ -34,7 +34,7 @@
 		{
 			if (!this.World.Assets.isCamping() && this.m.EscortedEntity == null)
 			{
-				this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.FastMult.VeryfastMult;
+				this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.VeryfastMult;
 			}
 
 			this.setPause(false);
@@ -47,7 +47,7 @@
 		{
 			if (!this.World.Assets.isCamping() && this.m.EscortedEntity == null)
 			{
-				this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.FastMult.SuperfastMult;
+				this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.SuperfastMult;
 			}
 
 			this.setPause(false);

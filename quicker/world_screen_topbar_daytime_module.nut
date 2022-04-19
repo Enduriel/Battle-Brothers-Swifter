@@ -3,8 +3,17 @@
 	local create = o.create;
 	o.create = function()
 	{
+		create();
 		this.m.OnTimeVeryfastPressedListener <- null;
 		this.m.OnTimeSuperfastPressedListener <- null;
+	}
+
+	local clearEventListener = o.clearEventListener;
+	o.clearEventListener = function()
+	{
+		clearEventListener();
+		this.m.OnTimeVeryfastPressedListener = null;
+		this.m.OnTimeSuperfastPressedListener = null;
 	}
 
 	o.setOnTimeVeryfastPressedListener <- function( _listener )

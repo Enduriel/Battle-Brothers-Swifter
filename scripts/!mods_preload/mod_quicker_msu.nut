@@ -17,15 +17,15 @@
 
 	::mods_registerJS("quicker/quicker.js");
 	::mods_registerJS("quicker/world_screen_topbar_daytime_module.js");
-	::mods_registerCSS("quicker/world_screen_topbar_daytime_module.css");
+	::mods_registerCSS("quicker/css/world_screen_topbar_daytime_module.css");
 
-	::QuickerMSU.Mod.addSQKeybind("4x World Speed", "3", ::MSU.Key.State.World, function ()
+	::QuickerMSU.Mod.Keybinds.addSQKeybind("veryfastTime", "3", ::MSU.Key.State.World, function ()
 	{
-		this.setVeryrfastTime();
-	});
+		this.setVeryfastTime();
+	}, "4x World Speed");
 
-	::QuickerMSU.Mod.addSQKeybind("8x World Speed", "4", ::MSU.Key.State.World, function ()
+	::QuickerMSU.Mod.Keybinds.addSQKeybind("superfastTime", "4", ::MSU.Key.State.World, function ()
 	{
 		this.setSuperfastTime();
-	});
+	}, "8x World Speed");
 });
