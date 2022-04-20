@@ -24,7 +24,10 @@
 	local onUpdate = o.onUpdate;
 	o.onUpdate = function()
 	{
-		::QuickerMSU.EnableSpeed = false;
+		if (::World.Assets.isCamping() || (this.m.EscortedEntity != null && !this.m.EscortedEntity.isNull() && this.m.EscortedEntity.isAlive()))
+		{
+			::QuickerMSU.EnableSpeed = false;
+		}
 		onUpdate();
 		::QuickerMSU.EnableSpeed = true;
 	}
