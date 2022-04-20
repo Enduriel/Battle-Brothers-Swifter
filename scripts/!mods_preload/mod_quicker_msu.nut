@@ -14,6 +14,7 @@
 	::include("quicker/world_screen_topbar_daytime_module");
 	::include("quicker/world_state");
 	::include("quicker/tooltip_events");
+	::include("quicker/tactical_state");
 
 	::mods_registerJS("quicker/quicker.js");
 	::mods_registerJS("quicker/world_screen_topbar_daytime_module.js");
@@ -28,4 +29,15 @@
 	{
 		this.setSuperfastTime();
 	}, "8x World Speed");
+
+	local page = ::MSU.Class.SettingsPage("General");
+	::QuickerMSU.Mod.ModSettings.addPage(page);
+
+	local setting = ::MSU.Class.RangeSetting("CombatSpeed", 1, 1, 4, 0.5, "Combat Speed")
+	setting.setDescription("Increases the animation speed of all engagements.")
+	setting.addCallback(function(_value)
+	{
+		::Time.setVirtualSpeed(_value);
+	});
+	page.add(setting);
 });
