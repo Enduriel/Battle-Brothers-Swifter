@@ -1,7 +1,8 @@
 ::QuickerMSU <- {
 	ID = "mod_quicker_msu",
 	Name = "Quicker",
-	Version = "0.1.0"
+	Version = "0.1.0",
+	EnableSpeed = true
 }
 ::mods_registerMod(::QuickerMSU.ID, 1.0, ::QuickerMSU.Name);
 ::mods_queue(::QuickerMSU.ID, "mod_msu, !mod_legends, !quicker", function()
@@ -10,6 +11,19 @@
 
 	::Const.World.SpeedSettings.VeryfastMult <- 4.0;
 	::Const.World.SpeedSettings.SuperfastMult <- 8.0;
+
+	local setSpeedMult = ::World.setSpeedMult;
+	::World.setSpeedMult = function( _mult )
+	{
+		if (::QuickerMSU.EnableSpeed)
+		{
+			setSpeedMult(_mult);
+		}
+		else
+		{
+			::QuickerMSU.EnableSpeed = true
+		}
+	}
 
 	::include("quicker/world_screen_topbar_daytime_module");
 	::include("quicker/world_state");
