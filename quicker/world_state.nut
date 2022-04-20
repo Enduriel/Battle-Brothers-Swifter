@@ -60,6 +60,29 @@
 		}
 	}
 
+	local function setSpeedMults()
+	{
+		if (!this.m.MenuStack.hasBacksteps())
+		{
+			if (this.World.Assets.isCamping()) this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.CampMult;
+			if (this.m.EscortedEntity != null) this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.EscortMult;
+		}
+	}
+
+	local setNormalTime = o.setNormalTime;
+	o.setNormalTime = function()
+	{
+		setSpeedMults();
+		setNormalTime();
+	}
+
+	local setFastTime = o.setFastTime;
+	o.setFastTime = function()
+	{
+		setSpeedMults();
+		setFastTime();
+	}
+
 	o.setVeryfastTime <- function()
 	{
 		if (!this.m.MenuStack.hasBacksteps())
