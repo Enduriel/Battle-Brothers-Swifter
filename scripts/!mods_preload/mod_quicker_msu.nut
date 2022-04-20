@@ -37,11 +37,13 @@
 	::QuickerMSU.Mod.Keybinds.addSQKeybind("veryfastTime", "3", ::MSU.Key.State.World, function ()
 	{
 		this.setVeryfastTime();
+		return false;
 	}, "4x World Speed");
 
 	::QuickerMSU.Mod.Keybinds.addSQKeybind("superfastTime", "4", ::MSU.Key.State.World, function ()
 	{
 		this.setSuperfastTime();
+		return false;
 	}, "8x World Speed");
 
 	local page = ::MSU.Class.SettingsPage("General");
