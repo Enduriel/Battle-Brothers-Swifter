@@ -75,7 +75,6 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 }
 
 Quicker.WorldScreenTopbarDayTimeModule_bindTooltips = WorldScreenTopbarDayTimeModule.prototype.bindTooltips;
-
 WorldScreenTopbarDayTimeModule.prototype.bindTooltips = function ()
 {
 	Quicker.WorldScreenTopbarDayTimeModule_bindTooltips.call(this);
@@ -85,7 +84,7 @@ WorldScreenTopbarDayTimeModule.prototype.bindTooltips = function ()
 };
 
 Quicker.WorldScreenTopbarDayTimeModule_unbindTooltips = WorldScreenTopbarDayTimeModule.prototype.unbindTooltips;
-WorldScreenTopbarDayTimeModule.prototype.bindTooltips = function ()
+WorldScreenTopbarDayTimeModule.prototype.unbindTooltips = function ()
 {
 	Quicker.WorldScreenTopbarDayTimeModule_unbindTooltips.call(this);
 

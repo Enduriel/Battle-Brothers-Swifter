@@ -1,4 +1,4 @@
-::mods_hookNewObjectOnce("ui/screens/tooltip/tooltip_events.nut", function( o )
+::mods_hookNewObjectOnce("ui/screens/tooltip/tooltip_events", function( o )
 {
 	local general_queryUIElementTooltipData = o.general_queryUIElementTooltipData;
 	o.general_queryUIElementTooltipData = function( _entityId, _elementId, _elementOwner )
