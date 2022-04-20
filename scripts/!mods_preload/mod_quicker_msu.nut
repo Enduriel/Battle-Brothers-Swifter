@@ -46,14 +46,12 @@
 		return false;
 	}, "8x World Speed");
 
-	local page = ::MSU.Class.SettingsPage("General");
-	::QuickerMSU.Mod.ModSettings.addPage(page);
+	local page = ::QuickerMSU.Mod.ModSettings.addPage("Tactical");
 
-	local setting = ::MSU.Class.RangeSetting("CombatSpeed", 1, 1, 4, 0.5, "Combat Speed")
-	setting.setDescription("Increases the animation speed of all engagements.")
+	local setting = page.addRangeSetting("CombatSpeed", 1, 1, 4, 0.5, "Combat Speed");
+	setting.setDescription("Increases the animation speed of all engagements.");
 	setting.addCallback(function(_value)
 	{
 		::Time.setVirtualSpeed(_value);
 	});
-	page.add(setting);
 });
