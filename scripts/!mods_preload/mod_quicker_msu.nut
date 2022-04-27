@@ -4,8 +4,8 @@
 	Version = "0.1.0",
 	EnableSpeed = true
 }
-::mods_registerMod(::QuickerMSU.ID, 1.0, ::QuickerMSU.Name);
-::mods_queue(::QuickerMSU.ID, "mod_msu, !mod_legends, !quicker", function()
+::mods_registerMod(::QuickerMSU.ID, ::QuickerMSU.Version, ::QuickerMSU.Name);
+::mods_queue(::QuickerMSU.ID, "mod_msu(>=1.0.0-alpha.4), !mod_legends, !quicker", function()
 {
 	::QuickerMSU.Mod <- ::MSU.Class.Mod(::QuickerMSU.ID, ::QuickerMSU.Version, ::QuickerMSU.Name);
 
