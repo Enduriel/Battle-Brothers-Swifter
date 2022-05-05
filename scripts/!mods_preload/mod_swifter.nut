@@ -1,11 +1,11 @@
 ::Swifter <- {
 	ID = "mod_swifter",
 	Name = "Swifter",
-	Version = "0.1.0",
+	Version = "1.0.0-beta",
 	EnableSpeed = true
 }
 ::mods_registerMod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
-::mods_queue(::Swifter.ID, "mod_msu(>=1.0.0-alpha.2), >mod_legends(>=16.0.0-alpha), !swifter", function()
+::mods_queue(::Swifter.ID, "mod_msu(>=1.0.0-beta), >mod_legends(>=16.0.0-alpha), !swifter", function()
 {
 	::Swifter.Mod <- ::MSU.Class.Mod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
 
