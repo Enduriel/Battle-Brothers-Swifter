@@ -8,12 +8,12 @@
 
 		switch (_elementId)
 		{
-			case "quicker.TimeVeryfastButton":
+			case "swifter.TimeVeryfastButton":
 				return [
 					{
 						id = 1,
 						type = "title",
-						text = "Very Fast Speed (" + ::getModSetting(::QuickerMSU.ID, "veryfastTime").getValue() + ")"
+						text = "Very Fast Speed (" + ::getModSetting(::Swifter.ID, "veryfastTime").getValue() + ")"
 					},
 					{
 						id = 2,
@@ -22,12 +22,12 @@
 					}
 				];
 
-			case "quicker.TimeSuperfastButton":
+			case "swifter.TimeSuperfastButton":
 				return [
 					{
 						id = 1,
 						type = "title",
-						text = "Super Fast Speed (" + ::getModSetting(::QuickerMSU.ID, "superfastTime").getValue() + ")"
+						text = "Super Fast Speed (" + ::getModSetting(::Swifter.ID, "superfastTime").getValue() + ")"
 					},
 					{
 						id = 2,

@@ -9,7 +9,7 @@
 		dayTimeModule.setOnTimeSuperfastPressedListener(this.setSuperfastTime.bindenv(this));
 	}
 
-	local function updateQuickerSpeeds()
+	local function updateSwifterSpeeds()
 	{
 		if (this.World.getSpeedMult() == 4.0)
 		{
@@ -26,10 +26,10 @@
 	{
 		if (::World.Assets.isCamping() || (this.m.EscortedEntity != null && !this.m.EscortedEntity.isNull() && this.m.EscortedEntity.isAlive()))
 		{
-			::QuickerMSU.EnableSpeed = false;
+			::Swifter.EnableSpeed = false;
 		}
 		onUpdate();
-		::QuickerMSU.EnableSpeed = true;
+		::Swifter.EnableSpeed = true;
 	}
 
 	local setPause = o.setPause;
@@ -39,7 +39,7 @@
 		if (("TopbarDayTimeModule" in this.World) && this.World.TopbarDayTimeModule != null)
 		{
 			if (this.m.IsGamePaused) return;
-			updateQuickerSpeeds();
+			updateSwifterSpeeds();
 		}
 	}
 
@@ -49,7 +49,7 @@
 		setEscortedEntity(_e);
 		if (this.m.EscortedEntity != null && !this.m.EscortedEntity.isNull() && this.m.EscortedEntity.isAlive())
 		{
-			updateQuickerSpeeds();
+			updateSwifterSpeeds();
 		}
 	}
 
@@ -59,7 +59,7 @@
 		onCamp();
 		if (this.World.Assets.isCamping())
 		{
-			updateQuickerSpeeds();
+			updateSwifterSpeeds();
 		}
 	}
 
