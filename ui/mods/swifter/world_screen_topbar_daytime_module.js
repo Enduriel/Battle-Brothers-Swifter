@@ -2,6 +2,11 @@ Swifter.WorldScreenTopbarDayTimeModule_updateButtons = WorldScreenTopbarDayTimeM
 WorldScreenTopbarDayTimeModule.prototype.updateButtons = function (_state)
 {
 	Swifter.WorldScreenTopbarDayTimeModule_updateButtons.call(this, _state);
+	this.updateButtonIcons(_state)
+}
+
+WorldScreenTopbarDayTimeModule.prototype.updateButtonIcons = function (_state)
+{
 	this.mTimePauseButton.changeButtonImage(Path.GFX + (_state == 0 ? Swifter.Asset.BUTTON_PAUSE : Swifter.Asset.BUTTON_PAUSE_DISABLED));
 	this.mTimeNormalButton.changeButtonImage(Path.GFX + (_state == 1 ? Swifter.Asset.BUTTON_PLAY : Swifter.Asset.BUTTON_PLAY_DISABLED));
 	this.mTimeFastButton.changeButtonImage(Path.GFX + (_state == 2 ? Swifter.Asset.BUTTON_FAST_FORWARD : Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED));
@@ -23,11 +28,7 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 	{
 		self.notifyBackendTimeVeryfastButtonPressed();
 
-		self.mTimePauseButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PAUSE_DISABLED);
-		self.mTimeNormalButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PLAY_DISABLED);
-		self.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
-		self.mTimeVeryfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_VERYFAST);
-		self.mTimeSuperfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_SUPERFAST_DISABLED);
+		self.updateButtonIcons(3)
 	}, '', 10);
 
 	layout = $('<div class="l-superfast-time-button"/>');
@@ -36,40 +37,24 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 	{
 		self.notifyBackendTimeSuperfastButtonPressed();
 
-		self.mTimePauseButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PAUSE_DISABLED);
-		self.mTimeNormalButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PLAY_DISABLED);
-		self.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
-		self.mTimeVeryfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_VERYFAST_DISABLED);
-		self.mTimeSuperfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_SUPERFAST);
+		self.updateButtonIcons(4)
 	}, '', 10);
 
 	this.mTimePauseButton.on("click", function()
 	{
-		self.mTimePauseButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PAUSE);
-		self.mTimeNormalButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PLAY_DISABLED);
-		self.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
-		self.mTimeVeryfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_VERYFAST_DISABLED);
-		self.mTimeSuperfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_SUPERFAST_DISABLED);
+		self.updateButtonIcons(0)
 	});
 	this.mTimePauseButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PAUSE);
 
 	this.mTimeNormalButton.on("click", function()
 	{
-		self.mTimePauseButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PAUSE_DISABLED);
-		self.mTimeNormalButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PLAY);
-		self.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
-		self.mTimeVeryfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_VERYFAST_DISABLED);
-		self.mTimeSuperfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_SUPERFAST_DISABLED);
+		self.updateButtonIcons(1)
 	});
 	this.mTimeNormalButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PLAY_DISABLED);
 
 	this.mTimeFastButton.on("click", function()
 	{
-		self.mTimePauseButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PAUSE_DISABLED);
-		self.mTimeNormalButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PLAY_DISABLED);
-		self.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD);
-		self.mTimeVeryfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_VERYFAST_DISABLED);
-		self.mTimeSuperfastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_SUPERFAST_DISABLED);
+		self.updateButtonIcons(2)
 	});
 	this.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
 }
