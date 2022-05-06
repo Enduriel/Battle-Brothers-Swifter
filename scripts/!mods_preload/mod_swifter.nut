@@ -53,4 +53,7 @@
 	{
 		::Time.setVirtualSpeed(_value);
 	});
+
+	local special = ::Swifter.Mod.ModSettings.addPage("Special");
+	special.addBooleanSetting("Spin", false, "Magda Mode");
 });

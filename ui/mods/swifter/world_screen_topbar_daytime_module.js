@@ -7,6 +7,12 @@ WorldScreenTopbarDayTimeModule.prototype.updateButtons = function (_state)
 
 WorldScreenTopbarDayTimeModule.prototype.updateButtonIcons = function (_state)
 {
+	if (_state !== this.mCurrentState)
+	{
+		this.mTimeButtons[this.mCurrentState].css('transform', 'rotate(0deg)');
+		this.mCurrentRotation = 0;
+		this.mCurrentState = _state;
+	}
 	this.mTimePauseButton.changeButtonImage(Path.GFX + (_state == 0 ? Swifter.Asset.BUTTON_PAUSE : Swifter.Asset.BUTTON_PAUSE_DISABLED));
 	this.mTimeNormalButton.changeButtonImage(Path.GFX + (_state == 1 ? Swifter.Asset.BUTTON_PLAY : Swifter.Asset.BUTTON_PLAY_DISABLED));
 	this.mTimeFastButton.changeButtonImage(Path.GFX + (_state == 2 ? Swifter.Asset.BUTTON_FAST_FORWARD : Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED));
@@ -19,6 +25,9 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 {
 	this.mTimeVeryfastButton = null;
 	this.mTimeSuperfastButton = null;
+	this.mTimeButtons = null;
+	this.mCurrentState = null;
+	this.mCurrentRotation = 0;
 	Swifter.WorldScreenTopbarDayTimeModule_createDIV.call(this, _parentDiv);
 	var self = this;
 
@@ -57,6 +66,14 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 		self.updateButtonIcons(2)
 	});
 	this.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
+	this.mTimeButtons = [
+		this.mTimePauseButton,
+		this.mTimeNormalButton,
+		this.mTimeFastButton,
+		this.mTimeVeryfastButton,
+		this.mTimeSuperfastButton
+	]
+	this.mCurrentState = 0;
 }
 
 Swifter.WorldScreenTopbarDayTimeModule_bindTooltips = WorldScreenTopbarDayTimeModule.prototype.bindTooltips;
@@ -86,3 +103,16 @@ WorldScreenTopbarDayTimeModule.prototype.notifyBackendTimeSuperfastButtonPressed
 {
 	SQ.call(this.mSQHandle, 'onTimeSuperfastButtonPressed');
 }
+
+WorldScreenTopbarDayTimeModule.prototype.rotateButtons = function ()
+{
+	if (this.mCurrentState != 0 && MSU.getSettingValue(Swifter.ID, "Spin"))
+	{
+		this.mCurrentRotation += Math.pow(2, this.mCurrentState - 1);
+		if (this.mCurrentRotation >= 360) this.mCurrentRotation -= 360;
+		this.mTimeButtons[this.mCurrentState].css('transform', 'rotate(' + this.mCurrentRotation +'deg)')
+	}
+}
+
+Screens.WorldScreen.mTopbarDatasource.addListener(WorldScreenTopbarDatasourceIdentifier.TimeInformation.Updated, jQuery.proxy(Screens.WorldScreen.getModule('TopbarDayTimeModule').rotateButtons, Screens.WorldScreen.getModule('TopbarDayTimeModule')));
+
