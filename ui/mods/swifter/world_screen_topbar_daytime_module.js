@@ -108,7 +108,7 @@ WorldScreenTopbarDayTimeModule.prototype.rotateButtons = function ()
 {
 	if (this.mCurrentState != 0 && MSU.getSettingValue(Swifter.ID, "Spin"))
 	{
-		this.mCurrentRotation += Math.pow(2, this.mCurrentState - 1);
+		this.mCurrentRotation += 4 * Math.pow(2, this.mCurrentState - 1);
 		if (this.mCurrentRotation >= 360) this.mCurrentRotation -= 360;
 		this.mTimeButtons[this.mCurrentState].css('transform', 'rotate(' + this.mCurrentRotation +'deg)')
 	}
