@@ -47,7 +47,7 @@
 		return false;
 	}, "8x World Speed");
 
-	local page = ::Swifter.Mod.ModSettings.addPage("Tactical");
+	local page = ::Swifter.Mod.ModSettings.addPage("General");
 
 	local setting = page.addRangeSetting("CombatSpeed", 1, 1, 4, 0.5, "Combat Speed", "Increases the animation speed of all engagements.");
 	setting.addCallback(function(_value)
