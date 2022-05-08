@@ -29,6 +29,7 @@
 	::include("swifter/world_state");
 	::include("swifter/tooltip_events");
 	::include("swifter/tactical_state");
+	::include("swifter/event_manager");
 
 	::mods_registerJS("swifter/swifter.js");
 	::mods_registerJS("swifter/world_screen_topbar_daytime_module.js");
