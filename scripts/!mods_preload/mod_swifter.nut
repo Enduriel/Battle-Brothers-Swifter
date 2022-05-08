@@ -64,6 +64,5 @@
 		::Const.Events.AllottedTimePerEvaluationRun = 0.001 * _value;
 	});
 
-	local special = ::Swifter.Mod.ModSettings.addPage("Special");
-	special.addBooleanSetting("Spin", false, "Magda Mode");
+	page.addBooleanSetting("Spin", false, "Magda Mode");
 });
