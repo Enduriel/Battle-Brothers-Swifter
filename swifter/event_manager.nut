@@ -6,7 +6,7 @@
 		local selectEventGenerator = selectEvent();
 		while (true)
 		{
-			for (local i = 0; i < ::Math.floor(::World.getSpeedMult()); ++i)
+			for (local i = 0; i < ::World.getSpeedMult(); ++i)
 			{
 				if (resume selectEventGenerator == true) return true;
 			}
