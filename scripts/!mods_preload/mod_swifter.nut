@@ -64,5 +64,5 @@
 		::Const.Events.AllottedTimePerEvaluationRun = 0.001 * _value;
 	});
 
-	page.addBooleanSetting("Spin", false, "Magda Mode");
+	page.addBooleanSetting("Spin", false, "Magda Mode", "Don't throw up!");
 });
