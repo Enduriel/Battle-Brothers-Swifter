@@ -1,7 +1,7 @@
 ::Swifter <- {
 	ID = "mod_swifter",
 	Name = "Swifter",
-	Version = "1.0.0-beta.4",
+	Version = "1.0.0",
 	EnableSpeed = true
 }
 ::mods_registerMod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
