@@ -38,13 +38,13 @@
 	::Swifter.Mod.Keybinds.addSQKeybind("veryfastTime", "3", ::MSU.Key.State.World, function ()
 	{
 		this.setVeryfastTime();
-		return false;
+		return true;
 	}, "4x World Speed");
 
 	::Swifter.Mod.Keybinds.addSQKeybind("superfastTime", "4", ::MSU.Key.State.World, function ()
 	{
 		this.setSuperfastTime();
-		return false;
+		return true;
 	}, "8x World Speed");
 
 	local page = ::Swifter.Mod.ModSettings.addPage("General");
