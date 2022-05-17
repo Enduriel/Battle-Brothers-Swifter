@@ -55,7 +55,7 @@
 		::Time.setVirtualSpeed(_value);
 	});
 
-	setting = page.addRangeSetting("EventFrequency", 1.0, 0.25, 5, 0.25, "Event Frquency", "Multiplies the frequency of Events by this value");
+	setting = page.addRangeSetting("EventFrequency", 1.0, 0.25, 5, 0.25, "Event Frequency", "Multiplies the frequency of Events by this value");
 	setting.addCallback(function(_value)
 	{
 		::Const.Events.GlobalMinDelay = 240.0 / _value;
