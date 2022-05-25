@@ -83,6 +83,10 @@
 	o.setFastTime = function()
 	{
 		setSpeedMults();
+		if (!this.m.MenuStack.hasBacksteps())
+		{
+			if (this.m.EscortedEntity != null) this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.FastMult;
+		}
 		setFastTime();
 	}
 
