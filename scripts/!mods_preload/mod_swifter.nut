@@ -15,7 +15,7 @@
 	local setSpeedMult = ::World.setSpeedMult;
 	::World.setSpeedMult = function( _mult )
 	{
-		if (::Swifter.EnableSpeed)
+		if (::Swifter.EnableSpeed || _mult == 0.0)
 		{
 			setSpeedMult(_mult);
 		}
