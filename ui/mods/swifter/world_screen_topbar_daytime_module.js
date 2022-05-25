@@ -51,19 +51,31 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 
 	this.mTimePauseButton.on("click", function()
 	{
-		self.updateButtonIcons(0)
+		var disabled = $(this).attr('disabled');
+		if (disabled !== null && disabled !== 'disabled')
+		{
+			self.updateButtonIcons(0);
+		}
 	});
 	this.mTimePauseButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PAUSE);
 
 	this.mTimeNormalButton.on("click", function()
 	{
-		self.updateButtonIcons(1)
+		var disabled = $(this).attr('disabled');
+		if (disabled !== null && disabled !== 'disabled')
+		{
+			self.updateButtonIcons(1)
+		}
 	});
 	this.mTimeNormalButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_PLAY_DISABLED);
 
 	this.mTimeFastButton.on("click", function()
 	{
-		self.updateButtonIcons(2)
+		var disabled = $(this).attr('disabled');
+		if (disabled !== null && disabled !== 'disabled')
+		{
+			self.updateButtonIcons(2)
+		}
 	});
 	this.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
 	this.mTimeButtons = [
