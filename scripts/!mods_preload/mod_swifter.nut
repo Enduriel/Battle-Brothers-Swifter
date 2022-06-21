@@ -35,6 +35,7 @@
 	::mods_registerJS("swifter/world_screen_topbar_daytime_module.js");
 	::mods_registerCSS("swifter/css/world_screen_topbar_daytime_module.css");
 
+	::Swifter.Mod.Keybinds.addTitle("WorldKeybindsTitle", "World Keybinds");
 	::Swifter.Mod.Keybinds.addSQKeybind("veryfastTime", "3", ::MSU.Key.State.World, function ()
 	{
 		this.setVeryfastTime();
@@ -46,6 +47,32 @@
 		this.setSuperfastTime();
 		return true;
 	}, "8x World Speed");
+
+	::Swifter.Mod.Keybinds.addTitle("TacticalKeybindsTitle", "Combat Keybinds");
+
+	::Swifter.Mod.Keybinds.addSQKeybind("NormalTimeTactical", "f1", ::MSU.Key.State.Tactical, function()
+	{
+		::Swifter.Mod.ModSettings.getSetting("CombatSpeed").set(1);
+		return true;
+	}, "1x Combat Speed");
+
+	::Swifter.Mod.Keybinds.addSQKeybind("FastTimeTactical", "f2", ::MSU.Key.State.Tactical, function()
+	{
+		::Swifter.Mod.ModSettings.getSetting("CombatSpeed").set(2);
+		return true;
+	}, "2x Combat Speed");
+
+	::Swifter.Mod.Keybinds.addSQKeybind("VeryFastTimeTactical", "f3", ::MSU.Key.State.Tactical, function()
+	{
+		::Swifter.Mod.ModSettings.getSetting("CombatSpeed").set(3);
+		return true;
+	}, "3x Combat Speed");
+
+	::Swifter.Mod.Keybinds.addSQKeybind("SuperFastTimeTactical", "f4", ::MSU.Key.State.Tactical, function()
+	{
+		::Swifter.Mod.ModSettings.getSetting("CombatSpeed").set(4);
+		return true;
+	}, "4x Combat Speed");
 
 	local page = ::Swifter.Mod.ModSettings.addPage("General");
 
