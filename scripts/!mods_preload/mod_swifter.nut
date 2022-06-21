@@ -2,7 +2,15 @@
 	ID = "mod_swifter",
 	Name = "Swifter",
 	Version = "1.0.2",
-	EnableSpeed = true
+	EnableSpeed = true,
+	Delays = {
+		// ActionDelay = ::Const.AI.Agent.ActionDelay,
+		// MinorActionDelay = ::Const.AI.Agent.MinorActionDelay,
+		NewTurnDelayWithFasterMovement = ::Const.AI.Agent.NewTurnDelayWithFasterMovement,
+		NewTurnDelay = ::Const.AI.Agent.NewTurnDelay,
+		NewEvaluationDelay = ::Const.AI.Agent.NewEvaluationDelay,
+		CameraAdditionalDelay = ::Const.AI.Agent.CameraAdditionalDelay
+	}
 }
 ::mods_registerMod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
 ::mods_queue(::Swifter.ID, "mod_msu(>=1.0.0-beta), >mod_legends(>=16.0.0-alpha), !swifter", function()
@@ -30,6 +38,7 @@
 	::include("swifter/tooltip_events");
 	::include("swifter/tactical_state");
 	::include("swifter/event_manager");
+	::include("swifter/agent");
 
 	::mods_registerJS("swifter/swifter.js");
 	::mods_registerJS("swifter/world_screen_topbar_daytime_module.js");
@@ -80,6 +89,10 @@
 	setting.addCallback(function(_value)
 	{
 		::Time.setVirtualSpeed(_value);
+		foreach (key, value in ::Swifter.Delays)
+		{
+			::Const.AI.Agent[key] = ::Math.round(value / _value);
+		}
 	});
 
 	setting = page.addRangeSetting("EventFrequency", 1.0, 0.25, 5, 0.25, "Event Frequency", "Multiplies the frequency of Events by this value");
