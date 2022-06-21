@@ -39,8 +39,10 @@
 	::include("swifter/tactical_state");
 	::include("swifter/event_manager");
 	::include("swifter/agent");
+	::include("swifter/turn_sequence_bar");
 
 	::mods_registerJS("swifter/swifter.js");
+	::mods_registerJS("swifter/turnsequencebar_module.js");
 	::mods_registerJS("swifter/world_screen_topbar_daytime_module.js");
 	::mods_registerCSS("swifter/css/world_screen_topbar_daytime_module.css");
 
@@ -93,6 +95,7 @@
 		{
 			::Const.AI.Agent[key] = ::Math.round(value / _value);
 		}
+		if ("State" in ::Tactical) ::Tactical.State.m.TacticalScreen.getTurnSequenceBarModule().swifter_updateSpeeds(_value);
 	});
 
 	setting = page.addRangeSetting("EventFrequency", 1.0, 0.25, 5, 0.25, "Event Frequency", "Multiplies the frequency of Events by this value");
