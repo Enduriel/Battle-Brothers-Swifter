@@ -13,7 +13,7 @@
 	}
 }
 ::mods_registerMod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
-::mods_queue(::Swifter.ID, "mod_msu(>=1.0.0-beta), >mod_legends(>=16.0.0-alpha), !swifter", function()
+::mods_queue(::Swifter.ID, "mod_msu(>=1.0.0-beta), >mod_legends(>=16.0.0-alpha), !mod_autopilot, !quicker, !mod_faster, !mod_fastest", function()
 {
 	::Swifter.Mod <- ::MSU.Class.Mod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
 
