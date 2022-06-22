@@ -95,7 +95,7 @@
 		{
 			::Const.AI.Agent[key] = ::Math.round(value / _value);
 		}
-		if ("State" in ::Tactical) ::Tactical.State.m.TacticalScreen.getTurnSequenceBarModule().swifter_updateSpeeds(_value);
+		if ("State" in ::Tactical && ::Tactical.State != null) ::Tactical.State.m.TacticalScreen.getTurnSequenceBarModule().swifter_updateSpeeds(_value);
 	});
 
 	setting = page.addRangeSetting("EventFrequency", 1.0, 0.25, 5, 0.25, "Event Frequency", "Multiplies the frequency of Events by this value");
