@@ -1,7 +1,7 @@
 ::Swifter <- {
 	ID = "mod_swifter",
 	Name = "Swifter",
-	Version = "1.1.1",
+	Version = "1.1.2",
 	EnableSpeed = true,
 	Delays = {
 		// ActionDelay = ::Const.AI.Agent.ActionDelay,
