@@ -16,4 +16,11 @@
 			::Time.setVirtualSpeed(::Swifter.Mod.ModSettings.getSetting("CombatSpeed").getValue());
 		}
 	}
+
+	local onInitUI = o.onInitUI;
+	o.onInitUI = function()
+	{
+		onInitUI();
+		this.m.TacticalScreen.getTurnSequenceBarModule().swifter_updateSpeeds(::Swifter.Mod.ModSettings.getSetting("CombatSpeed").getValue())
+	}
 });
