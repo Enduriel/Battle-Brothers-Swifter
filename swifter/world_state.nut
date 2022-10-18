@@ -11,11 +11,11 @@
 
 	local function updateSwifterSpeeds()
 	{
-		if (this.World.getSpeedMult() == 4.0)
+		if (this.World.getSpeedMult() == ::Const.World.SpeedSettings.VeryfastMult)
 		{
 			this.World.TopbarDayTimeModule.updateTimeButtons(3);
 		}
-		else if (this.World.getSpeedMult() == 8.0)
+		else if (this.World.getSpeedMult() == ::Const.World.SpeedSettings.SuperfastMult)
 		{
 			this.World.TopbarDayTimeModule.updateTimeButtons(4);
 		}

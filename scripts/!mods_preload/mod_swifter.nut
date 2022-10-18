@@ -20,6 +20,9 @@
 	::Const.World.SpeedSettings.VeryfastMult <- 4.0;
 	::Const.World.SpeedSettings.SuperfastMult <- 8.0;
 
+	::Const.World.SpeedSettings.EscortMult = ::Const.World.SpeedSettings.VeryfastMult;
+	::Const.World.SpeedSettings.CampMult = ::Const.World.SpeedSettings.FastMult;
+
 	local setSpeedMult = ::World.setSpeedMult;
 	::World.setSpeedMult = function( _mult )
 	{
