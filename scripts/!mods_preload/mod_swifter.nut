@@ -1,11 +1,9 @@
 ::Swifter <- {
 	ID = "mod_swifter",
 	Name = "Swifter",
-	Version = "1.1.3",
+	Version = "1.2.0",
 	EnableSpeed = true,
 	Delays = {
-		// ActionDelay = ::Const.AI.Agent.ActionDelay,
-		// MinorActionDelay = ::Const.AI.Agent.MinorActionDelay,
 		NewTurnDelayWithFasterMovement = ::Const.AI.Agent.NewTurnDelayWithFasterMovement,
 		NewTurnDelay = ::Const.AI.Agent.NewTurnDelay,
 		NewEvaluationDelay = ::Const.AI.Agent.NewEvaluationDelay,
@@ -13,9 +11,11 @@
 	}
 }
 ::mods_registerMod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
-::mods_queue(::Swifter.ID, "mod_msu(>=1.0.0-beta), >mod_legends(>=16.0.0-alpha), !mod_autopilot, !quicker, !mod_faster, !mod_fastest", function()
+::mods_queue(::Swifter.ID, "mod_msu(>=1.2.0-rc.1), >mod_legends(>=16.0.0-alpha), !mod_autopilot, !quicker, !mod_faster, !mod_fastest", function()
 {
 	::Swifter.Mod <- ::MSU.Class.Mod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
+	::Swifter.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.GitHub, "https://github.com/Enduriel/Battle-Brothers-Swifter");
+	::Swifter.Mod.Registry.setUpdateSource(::MSU.System.Registry.ModSourceDomain.GitHub);
 
 	::Const.World.SpeedSettings.VeryfastMult <- 4.0;
 	::Const.World.SpeedSettings.SuperfastMult <- 8.0;
