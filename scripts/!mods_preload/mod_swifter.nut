@@ -11,7 +11,7 @@
 	}
 }
 ::mods_registerMod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
-::mods_queue(::Swifter.ID, "mod_msu(>=1.2.0-rc.1), >mod_legends(>=16.0.0-alpha), !mod_autopilot, !quicker, !mod_faster, !mod_fastest", function()
+::mods_queue(::Swifter.ID, "mod_msu(>=1.2.0-rc.3), >mod_legends(>=16.0.0-alpha), !mod_autopilot, !quicker, !mod_faster, !mod_fastest", function()
 {
 	::Swifter.Mod <- ::MSU.Class.Mod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
 	::Swifter.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.GitHub, "https://github.com/Enduriel/Battle-Brothers-Swifter");
@@ -34,6 +34,12 @@
 		{
 			::Swifter.EnableSpeed = true
 		}
+	}
+
+	local teleport = ::TacticalNavigator["__sqrat_ol_ teleport_6"];
+	::TacticalNavigator["__sqrat_ol_ teleport_6"] <- function( _user, _targetTile, _callback, _tag, _unknownBool, _delay )
+	{
+		return teleport(_user, _targetTile, _callback, _tag, _unknownBool, _delay / ::Swifter.Mod.ModSettings.getSetting("CombatSpeed").getValue().tofloat());
 	}
 
 	::include("swifter/world_screen_topbar_daytime_module");
