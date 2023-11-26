@@ -92,9 +92,8 @@ Swifter.Hooks.WorldScreenTopbarDayTimeModule_bindTooltips = WorldScreenTopbarDay
 WorldScreenTopbarDayTimeModule.prototype.bindTooltips = function ()
 {
 	Swifter.Hooks.WorldScreenTopbarDayTimeModule_bindTooltips.call(this);
-
-	this.mTimeVeryfastButton.bindTooltip({ contentType: 'ui-element', elementId: Swifter.TooltipIdentifier.TimeVeryfastButton });
-	this.mTimeSuperfastButton.bindTooltip({ contentType: 'ui-element', elementId: Swifter.TooltipIdentifier.TimeSuperfastButton });
+	this.mTimeVeryfastButton.bindTooltip({ contentType: 'msu-generic', modId: Swifter.ID, elementId: Swifter.TooltipIdentifier.TimeVeryfastButton })
+	this.mTimeSuperfastButton.bindTooltip({ contentType: 'msu-generic', modId: Swifter.ID, elementId: Swifter.TooltipIdentifier.TimeSuperfastButton })
 };
 
 Swifter.Hooks.WorldScreenTopbarDayTimeModule_unbindTooltips = WorldScreenTopbarDayTimeModule.prototype.unbindTooltips;

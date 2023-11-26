@@ -12,8 +12,8 @@ var Swifter = {
 		BUTTON_SUPERFAST_DISABLED:		"mods/swifter/time_x8_sw.png"
 	},
 	TooltipIdentifier: {
-		TimeVeryfastButton:				"swifter.TimeVeryfastButton",
-		TimeSuperfastButton:			"swifter.TimeSuperfastButton"
+		TimeVeryfastButton:				"TimeVeryfastButton",
+		TimeSuperfastButton:			"TimeSuperfastButton"
 	},
 	ID : "mod_swifter",
 	Hooks : {}
