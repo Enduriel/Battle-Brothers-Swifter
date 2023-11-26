@@ -115,6 +115,11 @@ WorldScreenTopbarDayTimeModule.prototype.notifyBackendTimeSuperfastButtonPressed
 	SQ.call(this.mSQHandle, 'onTimeSuperfastButtonPressed');
 }
 
+WorldScreenTopbarDayTimeModule.prototype.enableNormalTimeButton = function (_enabled)
+{
+	// stop vanilla disabling 1x speed
+}
+
 Swifter.Hooks.WorldScreenTopbarDayTimeModule_onTimeInformation = WorldScreenTopbarDayTimeModule.prototype.onTimeInformation;
 WorldScreenTopbarDayTimeModule.prototype.onTimeInformation = function (_datasource, _data)
 {
