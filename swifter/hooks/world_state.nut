@@ -70,6 +70,10 @@
 	q.setNormalTime = @(__original) function()
 	{
 		this.swifter_setSpeedMults();
+		if (!this.m.MenuStack.hasBacksteps())
+		{
+			this.m.LastWorldSpeedMult = 1.0;
+		}
 		__original();
 	}
 
@@ -78,13 +82,14 @@
 		this.swifter_setSpeedMults();
 		if (!this.m.MenuStack.hasBacksteps())
 		{
-			if (this.m.EscortedEntity != null) this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.FastMult;
+			this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.FastMult;
 		}
 		__original();
 	}
 
 	q.setVeryfastTime <- function()
 	{
+		this.swifter_setSpeedMults();
 		if (!this.m.MenuStack.hasBacksteps())
 		{
 			this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.VeryfastMult;
@@ -94,6 +99,7 @@
 
 	q.setSuperfastTime <- function()
 	{
+		this.swifter_setSpeedMults();
 		if (!this.m.MenuStack.hasBacksteps())
 		{
 			this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.SuperfastMult;
