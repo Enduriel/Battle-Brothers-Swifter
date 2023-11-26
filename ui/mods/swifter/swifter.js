@@ -15,5 +15,6 @@ var Swifter = {
 		TimeVeryfastButton:				"swifter.TimeVeryfastButton",
 		TimeSuperfastButton:			"swifter.TimeSuperfastButton"
 	},
-	ID : "mod_swifter"
+	ID : "mod_swifter",
+	Hooks : {}
 };

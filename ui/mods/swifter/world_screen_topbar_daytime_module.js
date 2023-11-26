@@ -1,7 +1,7 @@
-Swifter.WorldScreenTopbarDayTimeModule_updateButtons = WorldScreenTopbarDayTimeModule.prototype.updateButtons;
+Swifter.Hooks.WorldScreenTopbarDayTimeModule_updateButtons = WorldScreenTopbarDayTimeModule.prototype.updateButtons;
 WorldScreenTopbarDayTimeModule.prototype.updateButtons = function (_state)
 {
-	Swifter.WorldScreenTopbarDayTimeModule_updateButtons.call(this, _state);
+	Swifter.Hooks.WorldScreenTopbarDayTimeModule_updateButtons.call(this, _state);
 	this.updateButtonIcons(_state)
 }
 
@@ -20,7 +20,7 @@ WorldScreenTopbarDayTimeModule.prototype.updateButtonIcons = function (_state)
 	this.mTimeSuperfastButton.changeButtonImage(Path.GFX + (_state == 4 ? Swifter.Asset.BUTTON_SUPERFAST : Swifter.Asset.BUTTON_SUPERFAST_DISABLED));
 }
 
-Swifter.WorldScreenTopbarDayTimeModule_createDIV = WorldScreenTopbarDayTimeModule.prototype.createDIV;
+Swifter.Hooks.WorldScreenTopbarDayTimeModule_createDIV = WorldScreenTopbarDayTimeModule.prototype.createDIV;
 WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 {
 	this.mTimeVeryfastButton = null;
@@ -28,7 +28,7 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 	this.mTimeButtons = null;
 	this.mCurrentState = null;
 	this.mCurrentRotation = 0;
-	Swifter.WorldScreenTopbarDayTimeModule_createDIV.call(this, _parentDiv);
+	Swifter.Hooks.WorldScreenTopbarDayTimeModule_createDIV.call(this, _parentDiv);
 	var self = this;
 
 	var layout = $('<div class="l-veryfast-time-button"/>');
@@ -88,19 +88,19 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 	this.mCurrentState = 0;
 }
 
-Swifter.WorldScreenTopbarDayTimeModule_bindTooltips = WorldScreenTopbarDayTimeModule.prototype.bindTooltips;
+Swifter.Hooks.WorldScreenTopbarDayTimeModule_bindTooltips = WorldScreenTopbarDayTimeModule.prototype.bindTooltips;
 WorldScreenTopbarDayTimeModule.prototype.bindTooltips = function ()
 {
-	Swifter.WorldScreenTopbarDayTimeModule_bindTooltips.call(this);
+	Swifter.Hooks.WorldScreenTopbarDayTimeModule_bindTooltips.call(this);
 
 	this.mTimeVeryfastButton.bindTooltip({ contentType: 'ui-element', elementId: Swifter.TooltipIdentifier.TimeVeryfastButton });
 	this.mTimeSuperfastButton.bindTooltip({ contentType: 'ui-element', elementId: Swifter.TooltipIdentifier.TimeSuperfastButton });
 };
 
-Swifter.WorldScreenTopbarDayTimeModule_unbindTooltips = WorldScreenTopbarDayTimeModule.prototype.unbindTooltips;
+Swifter.Hooks.WorldScreenTopbarDayTimeModule_unbindTooltips = WorldScreenTopbarDayTimeModule.prototype.unbindTooltips;
 WorldScreenTopbarDayTimeModule.prototype.unbindTooltips = function ()
 {
-	Swifter.WorldScreenTopbarDayTimeModule_unbindTooltips.call(this);
+	Swifter.Hooks.WorldScreenTopbarDayTimeModule_unbindTooltips.call(this);
 
 	this.mTimeVeryfastButton.unbindTooltip();
 	this.mTimeSuperfastButton.unbindTooltip();
