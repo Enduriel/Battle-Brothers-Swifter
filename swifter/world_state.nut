@@ -1,15 +1,14 @@
-::mods_hookExactClass("states/world_state", function ( o )
+::Swifter.HookMod.hook("scripts/states/world_state", function (q)
 {
-	local onInitUI = o.onInitUI;
-	o.onInitUI = function()
+	q.onInitUI = @(__original) function()
 	{
-		onInitUI();
+		__original();
 		local dayTimeModule = this.m.WorldScreen.getTopbarDayTimeModule();
 		dayTimeModule.setOnTimeVeryfastPressedListener(this.setVeryfastTime.bindenv(this));
 		dayTimeModule.setOnTimeSuperfastPressedListener(this.setSuperfastTime.bindenv(this));
 	}
 
-	local function updateSwifterSpeeds()
+	q.swifter_updateSpeeds <- function()
 	{
 		if (this.World.getSpeedMult() == ::Const.World.SpeedSettings.VeryfastMult)
 		{
@@ -21,49 +20,45 @@
 		}
 	}
 
-	local onUpdate = o.onUpdate;
-	o.onUpdate = function()
+	q.onUpdate = @(__original) function()
 	{
 		if (::World.Assets.isCamping() || (this.m.EscortedEntity != null && !this.m.EscortedEntity.isNull() && this.m.EscortedEntity.isAlive()))
 		{
 			::Swifter.EnableSpeed = false;
 		}
-		onUpdate();
+		__original();
 		::Swifter.EnableSpeed = true;
 	}
 
-	local setPause = o.setPause;
-	o.setPause = function( _f )
+	q.setPause = @(__original) function( _f )
 	{
-		setPause(_f);
+		__original(_f);
 		if (("TopbarDayTimeModule" in this.World) && this.World.TopbarDayTimeModule != null)
 		{
 			if (this.m.IsGamePaused) return;
-			updateSwifterSpeeds();
+			this.swifter_updateSpeeds();
 		}
 	}
 
-	local setEscortedEntity = o.setEscortedEntity;
-	o.setEscortedEntity = function( _e )
+	q.setEscortedEntity = @(__original) function( _e )
 	{
-		setEscortedEntity(_e);
+		__original(_e);
 		if (this.m.EscortedEntity != null && !this.m.EscortedEntity.isNull() && this.m.EscortedEntity.isAlive())
 		{
-			updateSwifterSpeeds();
+			this.swifter_updateSpeeds();
 		}
 	}
 
-	local onCamp = o.onCamp;
-	o.onCamp = function()
+	q.onCamp = @(__original) function()
 	{
-		onCamp();
+		__original();
 		if (this.World.Assets.isCamping())
 		{
-			updateSwifterSpeeds();
+			this.swifter_updateSpeeds();
 		}
 	}
 
-	local function setSpeedMults()
+	q.swifter_setSpeedMults <- function()
 	{
 		if (!this.m.MenuStack.hasBacksteps())
 		{
@@ -72,25 +67,23 @@
 		}
 	}
 
-	local setNormalTime = o.setNormalTime;
-	o.setNormalTime = function()
+	q.setNormalTime = @(__original) function()
 	{
-		setSpeedMults();
-		setNormalTime();
+		this.swifter_setSpeedMults();
+		__original();
 	}
 
-	local setFastTime = o.setFastTime;
-	o.setFastTime = function()
+	q.setFastTime = @(__original) function()
 	{
-		setSpeedMults();
+		this.swifter_setSpeedMults();
 		if (!this.m.MenuStack.hasBacksteps())
 		{
 			if (this.m.EscortedEntity != null) this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.FastMult;
 		}
-		setFastTime();
+		__original();
 	}
 
-	o.setVeryfastTime <- function()
+	q.setVeryfastTime <- function()
 	{
 		if (!this.m.MenuStack.hasBacksteps())
 		{
@@ -99,7 +92,7 @@
 		}
 	}
 
-	o.setSuperfastTime <- function()
+	q.setSuperfastTime <- function()
 	{
 		if (!this.m.MenuStack.hasBacksteps())
 		{

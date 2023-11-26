@@ -1,32 +1,25 @@
-::mods_hookExactClass("ui/screens/world/modules/topbar/world_screen_topbar_daytime_module", function( o )
-{
-	local create = o.create;
-	o.create = function()
-	{
-		create();
-		this.m.OnTimeVeryfastPressedListener <- null;
-		this.m.OnTimeSuperfastPressedListener <- null;
-	}
+::Swifter.HookMod.hook("scripts/ui/screens/world/modules/topbar/world_screen_topbar_daytime_module", function(q) {
+	q.m.OnTimeVeryfastPressedListener <- null;
+	q.m.OnTimeSuperfastPressedListener <- null;
 
-	local clearEventListener = o.clearEventListener;
-	o.clearEventListener = function()
+	q.clearEventListener = @(__original) function()
 	{
-		clearEventListener();
+		__original();
 		this.m.OnTimeVeryfastPressedListener = null;
 		this.m.OnTimeSuperfastPressedListener = null;
 	}
 
-	o.setOnTimeVeryfastPressedListener <- function( _listener )
+	q.setOnTimeVeryfastPressedListener <- function( _listener )
 	{
 		this.m.OnTimeVeryfastPressedListener = _listener;
 	}
 
-	o.setOnTimeSuperfastPressedListener <- function( _listener )
+	q.setOnTimeSuperfastPressedListener <- function( _listener )
 	{
 		this.m.OnTimeSuperfastPressedListener = _listener;
 	}
 
-	o.onTimeVeryfastButtonPressed <- function()
+	q.onTimeVeryfastButtonPressed <- function()
 	{
 		if (this.m.OnTimeVeryfastPressedListener != null)
 		{
@@ -34,11 +27,12 @@
 		}
 	}
 
-	o.onTimeSuperfastButtonPressed <- function()
+	q.onTimeSuperfastButtonPressed <- function()
 	{
 		if (this.m.OnTimeSuperfastPressedListener != null)
 		{
 			this.m.OnTimeSuperfastPressedListener();
 		}
 	}
-});
+})
+

@@ -116,8 +116,10 @@ WorldScreenTopbarDayTimeModule.prototype.notifyBackendTimeSuperfastButtonPressed
 	SQ.call(this.mSQHandle, 'onTimeSuperfastButtonPressed');
 }
 
-WorldScreenTopbarDayTimeModule.prototype.rotateButtons = function ()
+Swifter.Hooks.WorldScreenTopbarDayTimeModule_onTimeInformation = WorldScreenTopbarDayTimeModule.prototype.onTimeInformation;
+WorldScreenTopbarDayTimeModule.prototype.onTimeInformation = function (_datasource, _data)
 {
+	Swifter.Hooks.WorldScreenTopbarDayTimeModule_onTimeInformation.call(this, _datasource, _data);
 	if (this.mCurrentState != 0 && MSU.getSettingValue(Swifter.ID, "Spin"))
 	{
 		this.mCurrentRotation += 4 * Math.pow(2, this.mCurrentState - 1);
@@ -125,6 +127,3 @@ WorldScreenTopbarDayTimeModule.prototype.rotateButtons = function ()
 		this.mTimeButtons[this.mCurrentState].css('transform', 'rotate(' + this.mCurrentRotation +'deg)')
 	}
 }
-
-Screens.WorldScreen.mTopbarDatasource.addListener(WorldScreenTopbarDatasourceIdentifier.TimeInformation.Updated, jQuery.proxy(Screens.WorldScreen.getModule('TopbarDayTimeModule').rotateButtons, Screens.WorldScreen.getModule('TopbarDayTimeModule')));
-

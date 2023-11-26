@@ -1,0 +1,11 @@
+Swifter.TurnSequenceBarValues = {};
+Swifter.TurnSequenceBarValues.mFadeInDuration = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mFadeInDuration;
+Swifter.TurnSequenceBarValues.mFadeOutDuration = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mFadeOutDuration;
+Swifter.TurnSequenceBarValues.mFadeOutDurationIfHiddenToPlayer = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mFadeOutDurationIfHiddenToPlayer;
+Swifter.TurnSequenceBarValues.mSlideInDuration = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mSlideInDuration;
+Swifter.TurnSequenceBarValues.mSlideOutDuration = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mSlideOutDuration;
+Swifter.TurnSequenceBarValues.mSlideOutDurationIfHiddenToPlayer = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mSlideOutDurationIfHiddenToPlayer;
+Swifter.TurnSequenceBarValues.mResizeFirstSlotTime = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mResizeFirstSlotTime;
+Swifter.TurnSequenceBarValues.mResizeFirstSlotTimeIfPreviousWasHiddenToPlayer = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mResizeFirstSlotTimeIfPreviousWasHiddenToPlayer;
+Swifter.TurnSequenceBarValues.mStatsPanelFadeInTime = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mStatsPanelFadeInTime;
+Swifter.TurnSequenceBarValues.mStatsPanelFadeOutTime = Screens.TacticalScreen.getModule("TurnSequenceBarModule").mStatsPanelFadeOutTime;

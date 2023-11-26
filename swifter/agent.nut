@@ -1,12 +1,5 @@
-::mods_hookBaseClass("ai/tactical/agent", function(o) {
-	o = o[o.SuperName];
-
-	local adjustCameraToTarget = o.adjustCameraToTarget;
-	// _targetTile, _additionalDelay = 0
-	o.adjustCameraToTarget = function( ... )
-	{
-		if (vargv.len() == 2) vargv[1] *= 1.0 / ::Swifter.Mod.ModSettings.getSetting("CombatSpeed").getValue();
-		vargv.insert(0, this);
-		return adjustCameraToTarget.acall(vargv);
+::Swifter.HookMod.hook("scripts/ai/tactical/agent", function(q) {
+	q.adjustCameraToTarget = @(__original) function(_targetTile, _additionalDelay = 0) {
+		return __original(_targetTile, _additionalDelay.tofloat() / ::Swifter.Mod.ModSettings.getSetting("CombatSpeed").getValue())
 	}
-});
+})
