@@ -45,14 +45,16 @@
 	}
 
 	::include("swifter/msu");
-	::include("swifter/world_screen_topbar_daytime_module");
-	::include("swifter/world_state");
-	::include("swifter/tooltip_events");
-	::include("swifter/tactical_state");
-	::include("swifter/event_manager");
-	::include("swifter/agent");
-	::include("swifter/turn_sequence_bar");
+	foreach (file in ::IO.enumerateFiles("swifter/hooks"))
+	{
+		::include(file);
+	}
 
+	::include("swifter/msu");
+	foreach (file in ::IO.enumerateFiles("swifter/hooks"))
+	{
+		::include(file);
+	}
 	::Hooks.registerJS("ui/mods/swifter/swifter.js");
 	::Hooks.registerJS("ui/mods/swifter/turnsequencebar_module.js");
 	::Hooks.registerJS("ui/mods/swifter/world_screen_topbar_daytime_module.js");
