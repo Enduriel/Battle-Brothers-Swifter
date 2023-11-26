@@ -12,7 +12,7 @@
 }
 ::Swifter.HookMod <- ::Hooks.register(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
 ::Swifter.HookMod.require("mod_msu >= 1.2.0-rc.1");
-::Swifter.HookMod.conflictWith("mod_legends < 16.0.0-alpha", "mod_autopilot [Use Hackflow's updated version instead]", "quicker", "mod_faster", "mod_fastest");
+::Swifter.HookMod.conflictWith("mod_legends < 16.0.0-alpha", "mod_autopilot [Use Hackflow's 'Autopilot New' instead]", "quicker", "mod_faster", "mod_fastest");
 
 ::Swifter.HookMod.queue(">mod_msu", "<mod_legends", function(){
 	::Swifter.Mod <- ::MSU.Class.Mod(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
