@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.3.1 - 2026-10-21
+
 - Fixed charges, Lunge, Footwork, the Kraken's tentacles and other skills that move a character ignoring the combat speed. They now follow the combat speed like every other animation.
 
 ## 1.3.0 - 2026-10-21
