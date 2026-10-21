@@ -16,14 +16,13 @@ WorldScreenTopbarDayTimeModule.prototype.updateButtonIcons = function (_state)
 	this.mTimePauseButton.changeButtonImage(Path.GFX + (_state == 0 ? Swifter.Asset.BUTTON_PAUSE : Swifter.Asset.BUTTON_PAUSE_DISABLED));
 	this.mTimeNormalButton.changeButtonImage(Path.GFX + (_state == 1 ? Swifter.Asset.BUTTON_PLAY : Swifter.Asset.BUTTON_PLAY_DISABLED));
 	this.mTimeFastButton.changeButtonImage(Path.GFX + (_state == 2 ? Swifter.Asset.BUTTON_FAST_FORWARD : Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED));
-	this.mTimeVeryfastButton.changeButtonImage(Path.GFX + (_state == 3 ? Swifter.Asset.BUTTON_VERYFAST : Swifter.Asset.BUTTON_VERYFAST_DISABLED));
+	this.mTimeVeryFastButton.changeButtonImage(Path.GFX + (_state == 3 ? Swifter.Asset.BUTTON_VERYFAST : Swifter.Asset.BUTTON_VERYFAST_DISABLED));
 	this.mTimeSuperfastButton.changeButtonImage(Path.GFX + (_state == 4 ? Swifter.Asset.BUTTON_SUPERFAST : Swifter.Asset.BUTTON_SUPERFAST_DISABLED));
 }
 
 Swifter.Hooks.WorldScreenTopbarDayTimeModule_createDIV = WorldScreenTopbarDayTimeModule.prototype.createDIV;
 WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 {
-	this.mTimeVeryfastButton = null;
 	this.mTimeSuperfastButton = null;
 	this.mTimeButtons = null;
 	this.mCurrentState = null;
@@ -31,16 +30,7 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 	Swifter.Hooks.WorldScreenTopbarDayTimeModule_createDIV.call(this, _parentDiv);
 	var self = this;
 
-	var layout = $('<div class="l-veryfast-time-button"/>');
-	this.mContainer.append(layout);
-	this.mTimeVeryfastButton = layout.createImageButton(Path.GFX + Swifter.Asset.BUTTON_VERYFAST_DISABLED, function ()
-	{
-		self.notifyBackendTimeVeryfastButtonPressed();
-
-		self.updateButtonIcons(3)
-	}, '', 10);
-
-	layout = $('<div class="l-superfast-time-button"/>');
+	var layout = $('<div class="l-superfast-time-button"/>');
 	this.mContainer.append(layout);
 	this.mTimeSuperfastButton = layout.createImageButton(Path.GFX + Swifter.Asset.BUTTON_SUPERFAST_DISABLED, function ()
 	{
@@ -78,11 +68,22 @@ WorldScreenTopbarDayTimeModule.prototype.createDIV = function (_parentDiv)
 		}
 	});
 	this.mTimeFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_FAST_FORWARD_DISABLED);
+
+	// vanilla's own 4x button
+	this.mTimeVeryFastButton.on("click", function()
+	{
+		var disabled = $(this).attr('disabled');
+		if (disabled !== null && disabled !== 'disabled')
+		{
+			self.updateButtonIcons(3)
+		}
+	});
+	this.mTimeVeryFastButton.changeButtonImage(Path.GFX + Swifter.Asset.BUTTON_VERYFAST_DISABLED);
 	this.mTimeButtons = [
 		this.mTimePauseButton,
 		this.mTimeNormalButton,
 		this.mTimeFastButton,
-		this.mTimeVeryfastButton,
+		this.mTimeVeryFastButton,
 		this.mTimeSuperfastButton
 	]
 	this.mCurrentState = 0;
@@ -92,7 +93,6 @@ Swifter.Hooks.WorldScreenTopbarDayTimeModule_bindTooltips = WorldScreenTopbarDay
 WorldScreenTopbarDayTimeModule.prototype.bindTooltips = function ()
 {
 	Swifter.Hooks.WorldScreenTopbarDayTimeModule_bindTooltips.call(this);
-	this.mTimeVeryfastButton.bindTooltip({ contentType: 'msu-generic', modId: Swifter.ID, elementId: Swifter.TooltipIdentifier.TimeVeryfastButton })
 	this.mTimeSuperfastButton.bindTooltip({ contentType: 'msu-generic', modId: Swifter.ID, elementId: Swifter.TooltipIdentifier.TimeSuperfastButton })
 };
 
@@ -101,23 +101,12 @@ WorldScreenTopbarDayTimeModule.prototype.unbindTooltips = function ()
 {
 	Swifter.Hooks.WorldScreenTopbarDayTimeModule_unbindTooltips.call(this);
 
-	this.mTimeVeryfastButton.unbindTooltip();
 	this.mTimeSuperfastButton.unbindTooltip();
-}
-
-WorldScreenTopbarDayTimeModule.prototype.notifyBackendTimeVeryfastButtonPressed = function ()
-{
-	SQ.call(this.mSQHandle, 'onTimeVeryfastButtonPressed');
 }
 
 WorldScreenTopbarDayTimeModule.prototype.notifyBackendTimeSuperfastButtonPressed = function ()
 {
 	SQ.call(this.mSQHandle, 'onTimeSuperfastButtonPressed');
-}
-
-WorldScreenTopbarDayTimeModule.prototype.enableNormalTimeButton = function (_enabled)
-{
-	// stop vanilla disabling 1x speed
 }
 
 Swifter.Hooks.WorldScreenTopbarDayTimeModule_onTimeInformation = WorldScreenTopbarDayTimeModule.prototype.onTimeInformation;

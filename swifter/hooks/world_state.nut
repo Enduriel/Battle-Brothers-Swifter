@@ -3,106 +3,30 @@
 	q.onInitUI = @(__original) function()
 	{
 		__original();
-		local dayTimeModule = this.m.WorldScreen.getTopbarDayTimeModule();
-		dayTimeModule.setOnTimeVeryfastPressedListener(this.setVeryfastTime.bindenv(this));
-		dayTimeModule.setOnTimeSuperfastPressedListener(this.setSuperfastTime.bindenv(this));
+		this.m.WorldScreen.getTopbarDayTimeModule().setOnTimeSuperfastPressedListener(this.setSuperfastTime.bindenv(this));
 	}
 
-	q.swifter_updateSpeeds <- function()
+	q.updateTopBarButtonState = @(__original) function()
 	{
-		if (this.World.getSpeedMult() == ::Const.World.SpeedSettings.VeryfastMult)
-		{
-			this.World.TopbarDayTimeModule.updateTimeButtons(3);
-		}
-		else if (this.World.getSpeedMult() == ::Const.World.SpeedSettings.SuperfastMult)
+		__original();
+		if (("TopbarDayTimeModule" in this.World) && this.World.TopbarDayTimeModule != null && !this.isPaused() && this.World.getSpeedMult() == ::Const.World.SpeedSettings.SuperfastMult)
 		{
 			this.World.TopbarDayTimeModule.updateTimeButtons(4);
 		}
 	}
 
-	q.onUpdate = @(__original) function()
+	// vanilla ignores 4x while camping or escorting, which would leave you stuck at 8x
+	// forcing is safe because setPause still raises the speed to the camping or escort minimum
+	q.setVeryFastTime = @(__original) function( _force = false )
 	{
-		if (::World.Assets.isCamping() || (this.m.EscortedEntity != null && !this.m.EscortedEntity.isNull() && this.m.EscortedEntity.isAlive()))
-		{
-			::Swifter.EnableSpeed = false;
-		}
-		__original();
-		::Swifter.EnableSpeed = true;
-	}
-
-	q.setPause = @(__original) function( _f )
-	{
-		__original(_f);
-		if (("TopbarDayTimeModule" in this.World) && this.World.TopbarDayTimeModule != null)
-		{
-			if (this.m.IsGamePaused) return;
-			this.swifter_updateSpeeds();
-		}
-	}
-
-	q.setEscortedEntity = @(__original) function( _e )
-	{
-		__original(_e);
-		if (this.m.EscortedEntity != null && !this.m.EscortedEntity.isNull() && this.m.EscortedEntity.isAlive())
-		{
-			this.swifter_updateSpeeds();
-		}
-	}
-
-	q.onCamp = @(__original) function()
-	{
-		__original();
-		if (this.World.Assets.isCamping())
-		{
-			this.swifter_updateSpeeds();
-		}
-	}
-
-	q.swifter_setSpeedMults <- function()
-	{
-		if (!this.m.MenuStack.hasBacksteps())
-		{
-			if (this.World.Assets.isCamping()) this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.CampMult;
-			if (this.m.EscortedEntity != null) this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.EscortMult;
-		}
-	}
-
-	q.setNormalTime = @(__original) function()
-	{
-		this.swifter_setSpeedMults();
-		if (!this.m.MenuStack.hasBacksteps())
-		{
-			this.m.LastWorldSpeedMult = 1.0;
-		}
-		__original();
-	}
-
-	q.setFastTime = @(__original) function()
-	{
-		this.swifter_setSpeedMults();
-		if (!this.m.MenuStack.hasBacksteps())
-		{
-			this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.FastMult;
-		}
-		__original();
-	}
-
-	q.setVeryfastTime <- function()
-	{
-		this.swifter_setSpeedMults();
-		if (!this.m.MenuStack.hasBacksteps())
-		{
-			this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.VeryfastMult;
-			this.setPause(false);
-		}
+		return __original(true);
 	}
 
 	q.setSuperfastTime <- function()
 	{
-		this.swifter_setSpeedMults();
 		if (!this.m.MenuStack.hasBacksteps())
 		{
-			this.m.LastWorldSpeedMult = this.Const.World.SpeedSettings.SuperfastMult;
+			this.m.LastWorldSpeedMult = ::Const.World.SpeedSettings.SuperfastMult;
 			this.setPause(false);
 		}
 	}

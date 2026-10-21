@@ -2,7 +2,6 @@
 	ID = "mod_swifter",
 	Name = "Swifter",
 	Version = "1.2.0",
-	EnableSpeed = true,
 	Delays = {
 		NewTurnDelayWithFasterMovement = ::Const.AI.Agent.NewTurnDelayWithFasterMovement,
 		NewTurnDelay = ::Const.AI.Agent.NewTurnDelay,
@@ -20,24 +19,8 @@
 	::Swifter.Mod.Registry.setUpdateSource(::MSU.System.Registry.ModSourceDomain.GitHub);
 	::Swifter.Mod.Registry.addModSource(::MSU.System.Registry.ModSourceDomain.NexusMods, "https://www.nexusmods.com/battlebrothers/mods/542");
 
-	::Const.World.SpeedSettings.VeryfastMult <- 4.0;
+	// vanilla has pause, 1x, 2x and 4x (VeryFastMult) and sets its own minimum speed while camping or escorting
 	::Const.World.SpeedSettings.SuperfastMult <- 8.0;
-
-	::Const.World.SpeedSettings.EscortMult = ::Const.World.SpeedSettings.VeryfastMult;
-	::Const.World.SpeedSettings.CampMult = ::Const.World.SpeedSettings.FastMult;
-
-	local setSpeedMult = ::World.setSpeedMult;
-	::World.setSpeedMult = function( _mult )
-	{
-		if (::Swifter.EnableSpeed || _mult == 0.0)
-		{
-			setSpeedMult(_mult);
-		}
-		else
-		{
-			::Swifter.EnableSpeed = true
-		}
-	}
 
 	local teleport = ::TacticalNavigator["__sqrat_ol_ teleport_6"];
 	::TacticalNavigator["__sqrat_ol_ teleport_6"] <- function( _user, _targetTile, _callback, _tag, _unknownBool, _delay )

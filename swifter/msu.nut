@@ -1,10 +1,4 @@
 ::Swifter.Mod.Keybinds.addTitle("WorldKeybindsTitle", "World Keybinds");
-::Swifter.Mod.Keybinds.addSQKeybind("veryfastTime", "3", ::MSU.Key.State.World, function ()
-{
-	this.setVeryfastTime();
-	return true;
-}, "4x World Speed");
-
 ::Swifter.Mod.Keybinds.addSQKeybind("superfastTime", "4", ::MSU.Key.State.World, function ()
 {
 	this.setSuperfastTime();
@@ -61,20 +55,6 @@ setting.addCallback(function(_value)
 
 page.addBooleanSetting("Spin", false, "Magda Mode", "Don't throw up!");
 ::Swifter.Mod.Tooltips.setTooltips({
-	TimeVeryfastButton = ::MSU.Class.CustomTooltip(function( _data ) {
-		return [
-			{
-				id = 1,
-				type = "title",
-				text = "Very Fast Speed (" + ::getModSetting(::Swifter.ID, "veryfastTime").getValue() + ")"
-			},
-			{
-				id = 2,
-				type = "description",
-				text = "Set time to pass much faster than normal. (4x Speed)"
-			}
-		];
-	})
 	TimeSuperfastButton = ::MSU.Class.CustomTooltip(function( _data ) {
 		return [
 			{
