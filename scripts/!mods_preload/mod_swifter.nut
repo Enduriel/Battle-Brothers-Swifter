@@ -50,12 +50,6 @@
 	{
 		::include(file);
 	}
-
-	::include("swifter/msu");
-	foreach (file in ::IO.enumerateFiles("swifter/hooks"))
-	{
-		::include(file);
-	}
 	::Hooks.registerJS("ui/mods/swifter/swifter.js");
 	::Hooks.registerJS("ui/mods/swifter/turnsequencebar_module.js");
 	::Hooks.registerJS("ui/mods/swifter/world_screen_topbar_daytime_module.js");
