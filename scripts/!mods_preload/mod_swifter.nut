@@ -1,7 +1,7 @@
 ::Swifter <- {
 	ID = "mod_swifter",
 	Name = "Swifter",
-	Version = "1.2.0",
+	Version = "1.3.0",
 	Delays = {
 		NewTurnDelayWithFasterMovement = ::Const.AI.Agent.NewTurnDelayWithFasterMovement,
 		NewTurnDelay = ::Const.AI.Agent.NewTurnDelay,

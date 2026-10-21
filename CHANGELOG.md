@@ -1,6 +1,9 @@
 # Changelog
 
 ## Unreleased
+
+## 1.3.0 - 2026-10-21
+
 - Now requires Battle Brothers 1.5.2.2 or later, MSU 1.2.0 or later and [Modern Hooks](https://www.nexusmods.com/battlebrothers/mods/685), which replaces the old modding script hooks.
 - MSU now tells you in-game when a Swifter update is out, with links to GitHub and Nexus.
 - Fixed the Barbarian King "Untoward March" and greenskin siege contracts breaking with Battle Brothers 1.5.2.2, and caravan escorts breaking when combined with other mods' fixes.
