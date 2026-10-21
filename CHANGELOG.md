@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fixed charges, Lunge, Footwork, the Kraken's tentacles and other skills that move a character ignoring the combat speed. They now follow the combat speed like every other animation.
+
 ## 1.3.0 - 2026-10-21
 
 - Now requires Battle Brothers 1.5.2.2 or later, MSU 1.2.0 or later and [Modern Hooks](https://www.nexusmods.com/battlebrothers/mods/685), which replaces the old modding script hooks.

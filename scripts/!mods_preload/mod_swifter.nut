@@ -22,12 +22,6 @@
 	// vanilla has pause, 1x, 2x and 4x (VeryFastMult) and sets its own minimum speed while camping or escorting
 	::Const.World.SpeedSettings.SuperfastMult <- 8.0;
 
-	local teleport = ::TacticalNavigator["__sqrat_ol_ teleport_6"];
-	::TacticalNavigator["__sqrat_ol_ teleport_6"] <- function( _user, _targetTile, _callback, _tag, _unknownBool, _delay )
-	{
-		return teleport(_user, _targetTile, _callback, _tag, _unknownBool, _delay / ::Swifter.Mod.ModSettings.getSetting("CombatSpeed").getValue().tofloat());
-	}
-
 	::include("swifter/msu");
 	foreach (file in ::IO.enumerateFiles("swifter/hooks"))
 	{
