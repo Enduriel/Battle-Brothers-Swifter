@@ -14,7 +14,7 @@
 //   speed 4 teleport 2.0     0.084        0.267           0.050
 //   speed 1 rise             1.017        1.017           1.017
 //   speed 4 rise             0.267        0.267           0.083
-::ClaudeProbe.DeferDone = true;
+::BbProbe.DeferDone = true;
 ::__speedTiming <- {
 	Waited = 0,
 	Speeds = [1.0, 4.0],
@@ -73,7 +73,7 @@
 		if (!up)
 		{
 			self.log("battle", "ERROR the battle never began");
-			::ClaudeProbe.done();
+			::BbProbe.done();
 			return;
 		}
 		// let the battle settle (deployment, first turn) before measuring
@@ -110,7 +110,7 @@
 		catch (e)
 		{
 			self.log("setup", "ERROR " + e);
-			::ClaudeProbe.done();
+			::BbProbe.done();
 		}
 	}
 
@@ -126,7 +126,7 @@
 		if (self.Index >= self.Speeds.len())
 		{
 			self.setSpeed(1.0);
-			::ClaudeProbe.done();
+			::BbProbe.done();
 			return;
 		}
 		self.setSpeed(self.Speeds[self.Index]);
