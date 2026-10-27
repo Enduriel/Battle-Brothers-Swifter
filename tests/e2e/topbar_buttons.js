@@ -1,9 +1,9 @@
 // Topbar time buttons: reports each button's box and image, and any pair whose centres are closer than 75% of a
 // button's width, i.e. drawn on top of each other (#175652712).
 // Run with escort_speed.nut in campaign mode. Passing: "overlaps = none".
-// Whichever probe calls ClaudeProbe.done() first ends the run, so this one only sends, and the SQ probe ends it.
+// Whichever probe calls BbProbe.done() first ends the run, so this one only sends, and the SQ probe ends it.
 // It waits until the world screen is shown (the intro event hides it), which escort_speed.nut's settle phase does.
-ClaudeProbe.run = function ()
+BbProbe.run = function ()
 {
 	var tries = 0;
 	var check = function ()
@@ -45,8 +45,8 @@ ClaudeProbe.run = function ()
 				}
 			}
 		}
-		ClaudeProbe.send('buttons', out.join(' | '));
-		ClaudeProbe.send('overlaps', overlaps.length === 0 ? 'none' : overlaps.join(' | '));
+		BbProbe.send('buttons', out.join(' | '));
+		BbProbe.send('overlaps', overlaps.length === 0 ? 'none' : overlaps.join(' | '));
 	};
 	check();
 };
