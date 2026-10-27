@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 1.3.2 - 2026-10-27
+
 - Removed Swifter's fix for events being rarer at higher world speeds, because vanilla now fixes this itself. With both, event checks at high speed did several times more work per frame than needed.
 
 ## 1.3.1 - 2026-10-21
