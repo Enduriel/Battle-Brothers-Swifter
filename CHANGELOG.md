@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Removed Swifter's fix for events being rarer at higher world speeds, because vanilla now fixes this itself. With both, event checks at high speed did several times more work per frame than needed.
+
 ## 1.3.1 - 2026-10-21
 
 - Fixed charges, Lunge, Footwork, the Kraken's tentacles and other skills that move a character ignoring the combat speed. They now follow the combat speed like every other animation.
