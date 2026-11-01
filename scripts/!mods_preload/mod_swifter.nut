@@ -7,6 +7,9 @@
 		NewTurnDelay = ::Const.AI.Agent.NewTurnDelay,
 		NewEvaluationDelay = ::Const.AI.Agent.NewEvaluationDelay,
 		CameraAdditionalDelay = ::Const.AI.Agent.CameraAdditionalDelay
+	},
+	QueueBucket = {
+		Late = []
 	}
 }
 ::Swifter.HookMod <- ::Hooks.register(::Swifter.ID, ::Swifter.Version, ::Swifter.Name);
@@ -33,3 +36,10 @@
 	::Hooks.registerLateJS("ui/mods/swifter/store_turnsequencebar_values.js");
 	::Hooks.registerCSS("ui/mods/swifter/css/world_screen_topbar_daytime_module.css");
 });
+
+::Swifter.HookMod.queue(function(){
+	foreach (func in ::Swifter.QueueBucket.Late)
+	{
+		func();
+	}
+}, ::Hooks.QueueBucket.Late);
